@@ -1,15 +1,14 @@
-.card {
+.cardContainer{
   width: 100%;
-  height: 100px;
-  border: 2px solid #383b40;
+  border: 1px solid #ccc;
   border-radius: 10px;
-  display: flex;
   margin-bottom: 20px;
+}
+.card {
+  display: flex;
   color: white;
   margin: 5px;
   padding: 10px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
   text-align: center;
   align-items: center;
   justify-content: space-between;
@@ -19,10 +18,22 @@
   border-radius: 50%;
   border: 2px solid #cddc38;
   height: 4em;
+  padding: 1em;
 }
 .cardDescription {
   color: white;
   display: flex;
   flex-direction: column;
   align-items: end;
+}
+.iconButtons{
+  background-color: #ccc;;
+  display: flex;
+  margin-left: 3.5em;
+  position: relative;
+  bottom: 15px;
+  border-radius: 10px; 
+  border: none;
+  cursor: pointer; 
+  outline: none;
 }

@@ -2,9 +2,36 @@
   text-align: center;
   height: 100vh;
 }
+.header{
+  height: 8%;
+  background-color: #272a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title{
+  margin: 0px;
+  color: white;
+  font-size: larger;
+}
+.ai{
+  color: #cddc38;
+}
 .navigationMenu {
-    display: flex;
-    height: 30%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  height: 8%;
+  align-items: center;
+  justify-content: center;
+  background-color: #272a2e;
+  color: #cddc38;
+  border-top: solid 0.3px #848688;
+}
+.routesWrapper{
+  display: flex;
+  justify-content: space-evenly;
+  width: 55%;
+}
+#routesLinks {
+  color: #cddc38;
+  text-decoration: none;
 }

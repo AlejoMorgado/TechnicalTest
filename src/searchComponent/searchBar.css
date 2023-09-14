@@ -1,36 +1,52 @@
-.searchContainer{
+.searchContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 70%;
-  margin: 0 auto; 
+  margin: 0 auto;
   margin-top: 20px;
 }
-.searchBarContainer{
+.form {
+  width: 70%;
   display: flex;
-  border: 2px solid #cddc38;
+  align-items: center;
+  justify-content: center;
+}
+.searchBarContainer {
+  width: 80%;
+  display: flex;
+  border: 2px solid #848688;
   border-radius: 10px;
 }
-.searchBar{
+.searchBar {
+  width: 100%;
   padding: 10px;
-  width: 70%; 
   font-size: 16px;
+  background-color: #272a2e;
+  color: white;
+  border-style: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.searchBar:focus {
+  border: 2px solid #cddc38; 
+  outline: none; 
 }
 .searchButton {
-  padding: 10px 20px;
-  background-color: #007bff; 
-  color: white; 
+  background-color: #272a2e;
   border: none;
-  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
-.searchButton :hover {
-  background-color: #0056b3; 
+.searchIcon {
+  height: 1.5em;
 }
-.cardsContainer{
+.cardsContainer {
+  margin-top: 50px;
   width: 70%;
   display: flex;
   flex-direction: column;

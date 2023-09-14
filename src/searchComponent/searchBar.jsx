@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { performSearch } from "./searchComponentHelper";
-import CardComponent from "./cardComponent/cardComponent";
+import CardComponent from "./cardComponent/cardComponent.jsx";
 import "./searchBar.css";
+import searchIcon from "../assets/searchIcon.png"
 
-const SearchBar = () => {
+const SearchBar = ({onFavoriteClick, handleRemoveFavorite, favorites}) => {
   const [query, setQuery] = useState("");
   const [personCards, setPersonCards] = useState([]);
+ 
 
   const handleCardClick = (username) => {
     console.log("Username clickeado:", username);
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +46,9 @@ const SearchBar = () => {
           picture={person.imageUrl}
           username={person.username}
           onClick={handleCardClick}
+          onFavoriteClick={onFavoriteClick}
+          handleRemoveFavorite={handleRemoveFavorite}
+          favorites={favorites}
         />
       ));
 
@@ -53,7 +59,7 @@ const SearchBar = () => {
   };
   return (
     <div className="searchContainer">
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="searchBarContainer">
           <input
             className="searchBar"
@@ -65,7 +71,7 @@ const SearchBar = () => {
             required
           />
           <button type="submit" className="searchButton">
-            Search
+            <img className="searchIcon" src={searchIcon} alt="search icon" />
           </button>
         </div>
       </form>
