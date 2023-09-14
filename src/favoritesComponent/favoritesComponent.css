@@ -20,7 +20,7 @@
   border-radius: 10px;
   margin-top: 20px;
 }
-.iconButtons{
+.iconButton{
   background-color: #ccc;;
   display: flex;
   align-self: flex-end;

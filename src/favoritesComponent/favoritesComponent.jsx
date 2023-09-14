@@ -10,7 +10,7 @@ const FavoritesList = ({ favorites, onRemoveFavorite }) => {
           <div className="favoriteContainer">
             <span className="name" key={index}>
               {favorite.name}
-              <button className="iconButtons" onClick={() => onRemoveFavorite(index)}>
+              <button className="iconButton" onClick={() => onRemoveFavorite(index)}>
               <img className="icons"  src={removeIcon} />
             </button>
             </span>
