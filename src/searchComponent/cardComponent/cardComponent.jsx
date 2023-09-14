@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./cardComponent.css";
 import favoriteIcon from "../../assets/favorite.png";
 import removeIcon from "../../assets/remove.png";
+import defaultProfileImage from "../../assets/notFound.png"; 
 
 const CardComponent = ({
   username,
@@ -18,8 +19,6 @@ const CardComponent = ({
       : professionalHeadline;
 
   const [isFavorite, setIsFavorite] = useState(false);
-
-  // Use useEffect to update isFavorite when favorites change
   useEffect(() => {
     setIsFavorite(favorites.some((favorite) => favorite.username === username));
   }, [favorites, username]);
@@ -32,10 +31,8 @@ const CardComponent = ({
   const handleFavoriteClick = () => {
     setIsFavorite(!isFavorite);
     if (isFavorite) {
-      // Si ya es favorito, elimínalo de la lista de favoritos
       handleRemoveFavorite(username);
     } else {
-      // Si no es favorito, agrégalo a la lista de favoritos
       onFavoriteClick({ username, name, picture });
     }
   };
@@ -47,8 +44,8 @@ const CardComponent = ({
         onClick={handleClick}
       >
         <img
-          className="profilePicture"
-          src={picture}
+          className={`profilePicture ${picture ? "" : "noPicture"}`}
+          src={picture || defaultProfileImage}
           alt={`${username}'s profile`}
         />
         <div className="cardDescription">

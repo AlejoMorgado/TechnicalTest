@@ -2,7 +2,6 @@ import React from "react";
 import removeIcon from "../assets/remove.png";
 import "./favoritesComponent.css";
 const FavoritesList = ({ favorites, onRemoveFavorite }) => {
-  console.log(favorites);
   return (
     <div>
       <div className="favoritesContainer">

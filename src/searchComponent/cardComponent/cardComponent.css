@@ -20,6 +20,9 @@
   height: 4em;
   padding: 1em;
 }
+.noPicture {
+  background-color: white;
+}
 .cardDescription {
   color: white;
   display: flex;

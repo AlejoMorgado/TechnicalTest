@@ -9,9 +9,6 @@ const SearchBar = ({onFavoriteClick, handleRemoveFavorite, favorites}) => {
   const [personCards, setPersonCards] = useState([]);
  
 
-  const handleCardClick = (username) => {
-    console.log("Username clickeado:", username);
-  };
 
 
   const handleSubmit = async (e) => {
@@ -37,7 +34,6 @@ const SearchBar = ({onFavoriteClick, handleRemoveFavorite, favorites}) => {
       const mappedArray = nonEmptyJsonResponseArray.map((item) =>
         JSON.parse(item)
       );
-      console.log(mappedArray);
       const personCards = mappedArray.map((person, index) => (
         <CardComponent
           key={index}
@@ -45,7 +41,6 @@ const SearchBar = ({onFavoriteClick, handleRemoveFavorite, favorites}) => {
           professionalHeadline={person.professionalHeadline}
           picture={person.imageUrl}
           username={person.username}
-          onClick={handleCardClick}
           onFavoriteClick={onFavoriteClick}
           handleRemoveFavorite={handleRemoveFavorite}
           favorites={favorites}
