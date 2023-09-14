@@ -1,0 +1,32 @@
+.favoritesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.name {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  color: #ccc;
+}
+.favoriteContainer {
+  background-color: #272a2e;
+  width: 20%;
+  height: 60px;
+  padding: 0.5em;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.iconButtons{
+  background-color: #ccc;;
+  display: flex;
+  align-self: flex-end;
+  margin-left: 2em;
+  border-radius: 10px; 
+  border: none;
+  cursor: pointer; 
+  outline: none;
+}
