@@ -1,32 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
+import { performSearch } from "./searchComponentHelper";
+import CardComponent from "./cardComponent/cardComponent";
+import "./searchBar.css";
 
 const SearchBar = () => {
-  return (
-    <form>
-      <label
-        for="default-search"
-        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-      >
-        Search
-      </label>
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        </div>
-        <input
-          type="search"
-          id="default-search"
-          class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search people by name"
-          required
+  const [query, setQuery] = useState("");
+  const [personCards, setPersonCards] = useState([]);
+
+  const handleCardClick = (username) => {
+    console.log("Username clickeado:", username);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payloadData = {
+      excludeContacts: true,
+      excludedPeople: [],
+      identityType: "person",
+      limit: 10,
+      meta: false,
+      query: query,
+      torreGgId: "1431772",
+    };
+
+    try {
+      const response = await performSearch(payloadData);
+      const responseData = response.data;
+      const jsonResponseArray = responseData.split("\n");
+      const nonEmptyJsonResponseArray = jsonResponseArray.filter(
+        (item) => item.trim() !== ""
+      );
+      const mappedArray = nonEmptyJsonResponseArray.map((item) =>
+        JSON.parse(item)
+      );
+      console.log(mappedArray);
+      const personCards = mappedArray.map((person, index) => (
+        <CardComponent
+          key={index}
+          name={person.name}
+          professionalHeadline={person.professionalHeadline}
+          picture={person.imageUrl}
+          username={person.username}
+          onClick={handleCardClick}
         />
-        <button
-          type="submit"
-          class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Search
-        </button>
-      </div>
-    </form>
+      ));
+
+      setPersonCards(personCards);
+    } catch (error) {
+      console.error("Error en la solicitud a la API:", error.message);
+    }
+  };
+  return (
+    <div className="searchContainer">
+      <form onSubmit={handleSubmit}>
+        <div className="searchBarContainer">
+          <input
+            className="searchBar"
+            type="search"
+            id="default-search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search people by name"
+            required
+          />
+          <button type="submit" className="searchButton">
+            Search
+          </button>
+        </div>
+      </form>
+      <div className="cardsContainer">{personCards}</div>
+    </div>
   );
 };
 
